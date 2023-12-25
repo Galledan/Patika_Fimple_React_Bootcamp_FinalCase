@@ -1,25 +1,51 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './pages/Home';
-import ApplicationSuccess from './pages/ApplicationSuccess';
-import ApplicationStatus from './pages/ApplicationStatus';
-import ApplicationDetailPage from './pages/ApplicationDetail';
-import AdminPanel from './pages/AdminPanel';
-import AdminApplicationDetailPage from './pages/AdminApplicationDetail';
+import React from "react";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
+import ApplicationCreate from "./pages/appcreate/ApplicationCreate";
+import ApplicationSuccess from "./pages/appsuccess/ApplicationSuccess";
+import ApplicationStatus from "./pages/appstatus/ApplicationStatus";
+import ApplicationDetailPage from "./pages/appdetail/ApplicationDetail";
+import AdminPanel from "./pages/adminpanel/AdminPanel";
+import AdminApplicationDetailPage from "./pages/adminappdetail/AdminApplicationDetail";
 function App() {
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Navigate to="/basvuru-olustur" replace />,
+    },
+    {
+      path: "/basvuru-olustur",
+      element: <ApplicationCreate />,
+    },
+    {
+      path: "/basvuru-basarili",
+      element: <ApplicationSuccess />,
+    },
+    {
+      path: "/basvuru-sorgula",
+      element: <ApplicationStatus />,
+    },
+    {
+      path: "/basvuru/:basvuruNo",
+      element: <ApplicationDetailPage />,
+    },
+    {
+      path: "/admin",
+      element: <AdminPanel />,
+    },
+    {
+      path: "/admin/basvuru-listesi",
+      element: <AdminPanel />,
+    },
+    {
+      path: "/admin/basvuru/:basvuruNo",
+      element: <AdminApplicationDetailPage />,
+    },
+  ]);
+
   return (
-    <Router>
-    <Switch>
-      <Route path="/basvuru-olustur" exact component={Home} />
-      <Route path="/basvuru-basarili" component={ApplicationSuccess} />
-      <Route path="/basvuru-sorgula" component={ApplicationStatus} />
-      <Route path="/basvuru/:basvuruNo" component={ApplicationDetailPage} />
-      <Route path="/admin" exact component={AdminPanel} />
-      <Route path="/admin/basvuru-listesi" exact component={AdminPanel} />
-      <Route path="/admin/basvuru/:basvuruNo" component={AdminApplicationDetailPage} />
-    </Switch>
-  </Router>
+    <RouterProvider router={router} />
   );
-};
+}
 
 export default App;
