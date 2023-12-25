@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ApplicationList from "../../components/applicationlist/ApplicationList";
+import LoginForm from "../../components/loginform/LoginForm";
 
 function AdminPanel() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = () => {
@@ -11,7 +12,6 @@ function AdminPanel() {
   };
 
   const handleLogout = () => {
-   
     setIsLoggedIn(false);
   };
 
@@ -19,16 +19,9 @@ function AdminPanel() {
     navigate("/admin/basvuru-listesi");
   };
 
-
   return (
     <div className="admin-panel-container">
-      {!isLoggedIn ? (
-        <div>
-          Login Kısmı
-        </div>
-      ) :
-      
-      <ApplicationList />}
+      {!isLoggedIn ? <LoginForm setIsLoggedIn={setIsLoggedIn} /> : <ApplicationList />}
     </div>
   );
 }

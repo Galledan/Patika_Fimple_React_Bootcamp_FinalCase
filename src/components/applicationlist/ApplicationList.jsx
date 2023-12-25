@@ -2,11 +2,14 @@ import React from "react";
 import { useApplication } from "../../context/ApplicationContext";
 import Application from "../application/Application";
 
+
 function ApplicationList() {
   const { applications } = useApplication();
 
+
   return (
     <div className="application-list-container">
+      <h2>Başvuru Listesi:</h2>
       {applications.map((app) => (
         <Application
           firstName={app.firstName}
