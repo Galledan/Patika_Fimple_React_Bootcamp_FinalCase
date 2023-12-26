@@ -1,8 +1,23 @@
 import React from "react";
 import { useFormik } from "formik";
+import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
-function LoginForm({setIsLoggedIn}) {
+function LoginForm({ setIsLoggedIn }) {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
+
+  const handleViewApplications = () => {
+    navigate("/admin/basvuru-listesi");
+  };
+
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -15,7 +30,8 @@ function LoginForm({setIsLoggedIn}) {
     onSubmit: async (values) => {
       try {
         console.log("Login successful", values);
-        setIsLoggedIn(true)
+        handleLogin();
+        handleViewApplications();
       } catch (error) {
         console.error("Login failed", error);
       }

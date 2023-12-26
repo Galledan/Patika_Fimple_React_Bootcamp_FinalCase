@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+
+:root {
+
+    /* Primary Colors */
+
+    --Dark : rgb(31, 31, 31);
+    --Lighter-Dark: rgb(56, 56, 56);
+    --Strong-Dark:rgb(17, 17, 17);
+
+    /* Secondary Colors */
+
+    --Light : rgb(223, 223, 223);
+    --Strong-Light : rgb(243, 243, 243);
+    --Darker-Light : rgb(197, 197, 197);
+
+
+    /* Root Design */
+
+    background-color: var(--Dark);
+    height: 100%;
+    width: 100%;
+}
