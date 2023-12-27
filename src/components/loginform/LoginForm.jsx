@@ -1,15 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import { useAuth } from "react-use-auth";
-
+import { useAdmin } from "../../context/AdminContext";
+import axios from "axios";
 function LoginForm({ setIsLoggedIn }) {
-  const navigate = useNavigate();
-  const { login } = useAuth();
+  const { admins } = useAdmin();
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
+  const [loginError, setLoginError] = useState(null);
+  const navigate = useNavigate();
+
+  const handleLogin = async (values) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/api/login",
+        values
+      );
+
+      if (response.data.success) {
+        console.log("Login successful");
+        setIsLoggedIn(true);
+      } else {
+        console.error("Login failed", response.data.error);
+      }
+    } catch (error) {
+      console.error("Login failed", error);
+    }
   };
 
   const handleLogout = () => {
@@ -31,16 +47,25 @@ function LoginForm({ setIsLoggedIn }) {
     }),
     onSubmit: async (values) => {
       try {
-        login(values);
-        console.log("Login successful", values);
-        handleLogin();
-        handleViewApplications();
+        const foundAdmin = admins.find(
+          (admin) =>
+            admin.username === values.username &&
+            admin.password === values.password
+        );
+
+        if (foundAdmin) {
+          console.log("Login successful", values);
+          handleLogin(values);
+          handleViewApplications();
+        } else {
+          console.error("Invalid username or password");
+          setLoginError("Invalid username or password");
+        }
       } catch (error) {
         console.error("Login failed", error);
       }
     },
   });
-
   return (
     <form onSubmit={formik.handleSubmit}>
       <div>
@@ -66,7 +91,7 @@ function LoginForm({ setIsLoggedIn }) {
           <div>{formik.errors.password}</div>
         )}
       </div>
-
+      {loginError && <div>{loginError}</div>}
       <button type="submit">Login</button>
     </form>
   );

@@ -1,8 +1,8 @@
 .form-container {
   border: 1px solid var(--Light);
   border-radius: 5px;
-  width: 800px;
-  height: 500px;
+  width: 700px;
+  height: 800px;
   overflow: hidden;
 }
 
@@ -12,33 +12,56 @@
   width: 100%;
   height: 100%;
   display: flex;
+  gap: 15px;
   color: var(--Light);
   flex-direction: column;
   align-items: center;
- 
 }
 
 .form-names,
 .form-numbers {
-  width: 100%;
+  width: 90%;
   height: calc(100% / 6);
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .form-reason,
 .form-address,
 .form-attachment,
 .form-button {
-  width: 100%;
+  width: 70%;
   height: calc(100% / 6);
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
+.form-fname,
+.form-lname,
+.form-age,
+.form-tc {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 
-.form-fname, .form-lname, .form-age, .form-tc {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+.form-names input,
+.form-numbers input {
+  padding: 5px;
+  border: 1px solid var(--Light);
+  background-color: var(--Lighter-Dark);
+  border-radius: 5px;
+  color: var(--Light);
+  height: 55px;
+  width: 250px;
+  font-family: inherit;
+  font-size: 1.2rem;
+}
+
+.form-fname label,
+.form-lname label,
+.form-age label,
+.form-tc label {
+  font-size: 1rem;
 }

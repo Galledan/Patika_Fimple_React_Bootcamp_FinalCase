@@ -66,6 +66,7 @@ const ApplicationForm = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.firstName}
+              placeholder="Adınızı giriniz"
             />
             {formik.touched.firstName && formik.errors.firstName && (
               <p>{formik.errors.firstName}</p>
@@ -80,6 +81,7 @@ const ApplicationForm = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.lastName}
+              placeholder="Soyadınızı giriniz"
             />
             {formik.touched.lastName && formik.errors.lastName && (
               <p>{formik.errors.lastName}</p>
@@ -96,6 +98,7 @@ const ApplicationForm = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.age}
+              placeholder="Yaşınızı giriniz"
             />
             {formik.touched.age && formik.errors.age && (
               <p>{formik.errors.age}</p>
@@ -110,6 +113,7 @@ const ApplicationForm = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.tcNumber}
+              placeholder="TC numaranızı giriniz"
             />
             {formik.touched.tcNumber && formik.errors.tcNumber && (
               <p>{formik.errors.tcNumber}</p>
@@ -124,6 +128,7 @@ const ApplicationForm = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.applicationReason}
+            placeholder="Başvuru sebebiniz..."
           />
           {formik.touched.applicationReason &&
             formik.errors.applicationReason && (
@@ -138,6 +143,7 @@ const ApplicationForm = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.address}
+            placeholder="Adresiniz..."
           />
           {formik.touched.address && formik.errors.address && (
             <p>{formik.errors.address}</p>
