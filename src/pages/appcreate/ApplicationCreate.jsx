@@ -1,5 +1,6 @@
 import React from 'react'
 import ApplicationForm from '../../components/applicationform/ApplicationForm'
+import "./appcreate.css"
 
 function ApplicationCreate() {
   return (

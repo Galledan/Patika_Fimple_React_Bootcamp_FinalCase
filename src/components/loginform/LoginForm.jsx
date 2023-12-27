@@ -2,9 +2,11 @@ import React from "react";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import { useAuth } from "react-use-auth";
 
 function LoginForm({ setIsLoggedIn }) {
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleLogin = () => {
     setIsLoggedIn(true);
@@ -29,6 +31,7 @@ function LoginForm({ setIsLoggedIn }) {
     }),
     onSubmit: async (values) => {
       try {
+        login(values);
         console.log("Login successful", values);
         handleLogin();
         handleViewApplications();
