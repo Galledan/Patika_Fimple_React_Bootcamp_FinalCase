@@ -36,7 +36,6 @@ const ApplicationForm = () => {
       applicationReason: "",
       address: "",
       attachments: "",
-      id: shortUUID.generate(),
       status: "pending",
     },
     validationSchema: validationSchema,
@@ -46,8 +45,9 @@ const ApplicationForm = () => {
           "http://localhost:3001/api/saveApplication",
           values
         );
+        const updatedValues = { ...values, id: response.data.id };
         console.log(response.data);
-        navigate("/basvuru-basarili", { state: { id: values.id } });
+        navigate("/basvuru-basarili", { state: { id: response.data.id } });
       } catch (error) {
         console.error("Veri gönderme hatası:", error);
       }
@@ -152,13 +152,17 @@ const ApplicationForm = () => {
 
         <div className="form-attachment">
           <label>Fotoğraf/Ekler</label>
-          <input
-            type="file"
-            name="attachments"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.attachments}
-          />
+          <div className="attachment-input">
+            <input
+              type="file"
+              name="attachments"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.attachments}
+            />
+            <p>Dosyalarınızı buraya sürekleyin veya buraya tıklayın.</p>
+          </div>
+
           {formik.touched.attachments && formik.errors.attachments && (
             <p>{formik.errors.attachments}</p>
           )}

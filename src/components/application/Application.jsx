@@ -1,42 +1,70 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import "./app.css";
 function Application({
   firstName,
   lastName,
-  age,
-  tcNumber,
   applicationReason,
-  address,
   attachments,
+  applicationDate,
   id,
   status,
 }) {
+  const [formattedDate, setFormattedDate] = useState("");
+  const [statusClass, setStatusClass] = useState("");
+
   const navigate = useNavigate();
 
   const handleApplicationClick = () => {
     console.log(id);
     navigate(`/admin/basvuru/${id}`);
-    
   };
 
+  const handleDateFormat = (date) => {
+    const newDate = new Date(date);
+    setFormattedDate(new Date(newDate).toLocaleDateString());
+    console.log(formattedDate);
+  };
+
+  const getStatusClass = () => {
+    switch (status) {
+      case "pending":
+        return "pending";
+      case "answered":
+        return "answered";
+      case "rejected":
+        return "rejected";
+      default:
+        return "";
+    }
+  };
+
+  useEffect(() => {
+    handleDateFormat(applicationDate);
+  }, []);
+
+  useEffect(() => {
+    setStatusClass(getStatusClass());
+  }, [status]);
+
   return (
-    <div  className="application-container">
+    <div className={`application-container ${statusClass}`}>
       <div className="applicant-info">
         <p className="applicant-name">
-          {firstName} {lastName}
+          Başvuran Adı Soyadı:{firstName} {lastName}
         </p>
-        <p className="applicant-age">{age}</p>
-        <p className="applicant-tcNumber">{tcNumber}</p>
+        <p>
+          Başvuru Tarihi:
+          {formattedDate}
+        </p>
       </div>
       <div className="application-info">
-        <p className="application-reason">{applicationReason}</p>
-      </div>
-      <div className="rest">
-        <p>{address}</p>
+        <p className="application-reason">
+          Başvuru Sebebi: {applicationReason}
+        </p>
         <p>{attachments}</p>
-        <p>{id}</p>
-        <p>{status}</p>
+      </div>
+      <div className="application-show-button">
         <button onClick={handleApplicationClick}>Görüntüle</button>
       </div>
     </div>

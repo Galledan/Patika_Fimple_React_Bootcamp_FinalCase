@@ -4,22 +4,24 @@ import axios from "axios";
 const AdminContext = createContext();
 
 const AdminProvider = ({ children }) => {
-  const [admins, setAdmins] = useState([]);
-
-  const getAdmins = async () => {
-    const res = await axios.get("http://localhost:3001/api/admins");
-    setAdmins(res.data);
-  };
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    getAdmins();
+    const checkLoginStatus = async () => {
+      try {
+        const response = await axios.get("http://localhost:3001/api/isLoggedIn");
+        setIsLoggedIn(response.data.success);
+      } catch (error) {
+        console.error("Login status check failed", error);
+      }
+    };
+
+    checkLoginStatus();
   }, []);
 
-  const value = { admins, setAdmins };
+  const value = { isLoggedIn, setIsLoggedIn };
 
-  return (
-    <AdminContext.Provider value={value}>{children}</AdminContext.Provider>
-  );
+  return <AdminContext.Provider value={value}>{children}</AdminContext.Provider>;
 };
 
 const useAdmin = () => {

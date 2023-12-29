@@ -1,6 +1,7 @@
 import React from "react";
 import { useApplication } from "../../context/ApplicationContext";
 import Application from "../application/Application";
+import "./applist.css"
 
 
 function ApplicationList() {
@@ -14,10 +15,8 @@ function ApplicationList() {
         <Application
           firstName={app.firstName}
           lastName={app.lastName}
-          age={app.age}
-          tcNumber={app.tcNumber}
           applicationReason={app.applicationReason}
-          address={app.address}
+          applicationDate={app.applicationDate}
           attachments={app.attachments}
           id={app.id}
           status={app.status}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ApplicationList from "../../components/applicationlist/ApplicationList";
 import LoginForm from "../../components/loginform/LoginForm";
+import "./adminpanel.css"
 
 function AdminPanel() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

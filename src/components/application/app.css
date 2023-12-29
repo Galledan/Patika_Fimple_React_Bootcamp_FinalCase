@@ -1,0 +1,30 @@
+.application-container {
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--Light);
+    border-radius: 5px;
+    gap: 10px;
+    width: 500px;
+}
+
+.applicant-info  {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.7rem;
+}
+
+.application-show-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.application-show-button > button {
+    border: 0px;
+    border-radius: 5px;
+    padding: 12px 8px;
+    font-family: inherit;
+    cursor: pointer;
+
+}

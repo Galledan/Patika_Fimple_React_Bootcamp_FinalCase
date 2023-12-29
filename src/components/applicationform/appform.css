@@ -1,5 +1,5 @@
 .form-container {
-  border: 1px solid var(--Light);
+  border: 1px solid var(--Darker-Light);
   border-radius: 5px;
   width: 700px;
   height: 800px;
@@ -30,11 +30,12 @@
 .form-address,
 .form-attachment,
 .form-button {
-  width: 70%;
+  width: 90%;
   height: calc(100% / 6);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 8px;
 }
 
 .form-fname,
@@ -48,15 +49,20 @@
 
 .form-names input,
 .form-numbers input {
-  padding: 5px;
-  border: 1px solid var(--Light);
-  background-color: var(--Lighter-Dark);
+  padding: 12px;
+  border: 1px solid var(--Darker-Light);
+  background-color: var(--Dark);
   border-radius: 5px;
   color: var(--Light);
   height: 55px;
   width: 250px;
   font-family: inherit;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+}
+
+.form-names input:active,
+.form-numbers input:active {
+  background-color: var(--Dark);
 }
 
 .form-fname label,
@@ -65,3 +71,72 @@
 .form-tc label {
   font-size: 1rem;
 }
+
+.form-reason > textarea,
+.form-address > textarea {
+  height: 100%;
+  padding: 12px;
+  resize: none;
+  border-radius: 5px;
+  border: 1px solid var(--Darker-Light);
+  background-color: var(--Dark);
+  font-family: inherit;
+  color: var(--Light);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active {
+  -webkit-text-fill-color: #ffffff;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.attachment-input {
+  position: relative;
+  width: 100%;
+  height: 60%;
+  border: 1px dashed var(--Darker-Light);
+  border-radius: 5px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.attachment-input > input {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.form-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-button > button {
+  width: 50%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 0px;
+  outline: none;
+  background-color: red;
+  color: var(--Light);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.form-button > button:hover {
+  background-color: rgb(165, 0, 0);
+}
+
+
