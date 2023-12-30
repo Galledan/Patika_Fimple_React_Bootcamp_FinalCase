@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import { useAdmin } from "../../context/AdminContext";
 import axios from "axios";
-function LoginForm({ setIsLoggedIn }) {
-  const { admins } = useAdmin();
+import { useAdmin } from "../../context/AdminContext";
 
+function LoginForm() {
   const [loginError, setLoginError] = useState(null);
   const navigate = useNavigate();
+  const { isLoggedIn,setIsLoggedIn } = useAdmin();
 
   const handleLogin = async (values) => {
     try {
@@ -20,20 +20,16 @@ function LoginForm({ setIsLoggedIn }) {
       if (response.data.success) {
         console.log("Login successful");
         setIsLoggedIn(true);
+        console.log(isLoggedIn);
+        localStorage.setItem("token", response.data.token);
+        navigate("/admin/basvuru-listesi");
       } else {
         console.error("Login failed", response.data.error);
+        setLoginError(response.data.error);
       }
     } catch (error) {
       console.error("Login failed", error);
     }
-  };
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-  };
-
-  const handleViewApplications = () => {
-    navigate("/admin/basvuru-listesi");
   };
 
   const formik = useFormik({
@@ -47,25 +43,13 @@ function LoginForm({ setIsLoggedIn }) {
     }),
     onSubmit: async (values) => {
       try {
-        const foundAdmin = admins.find(
-          (admin) =>
-            admin.username === values.username &&
-            admin.password === values.password
-        );
-
-        if (foundAdmin) {
-          console.log("Login successful", values);
-          handleLogin(values);
-          handleViewApplications();
-        } else {
-          console.error("Invalid username or password");
-          setLoginError("Invalid username or password");
-        }
+        await handleLogin(values);
       } catch (error) {
         console.error("Login failed", error);
       }
     },
   });
+
   return (
     <form onSubmit={formik.handleSubmit}>
       <div>

@@ -1,18 +1,17 @@
-import React, { useState } from "react";
-import ApplicationList from "../../components/applicationlist/ApplicationList";
+import React, { useEffect } from "react";
 import LoginForm from "../../components/loginform/LoginForm";
-import "./adminpanel.css"
-
+import "./adminpanel.css";
+import { useAdmin } from "../../context/AdminContext";
 function AdminPanel() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
+ 
 
+  useEffect(() => {
+    
+  })
   return (
     <div className="admin-panel-container">
-      {!isLoggedIn ? (
-        <LoginForm setIsLoggedIn={setIsLoggedIn} />
-      ) : (
-        <ApplicationList />
-      )}
+      <LoginForm />
     </div>
   );
 }

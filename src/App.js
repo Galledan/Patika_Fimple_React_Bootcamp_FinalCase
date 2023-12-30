@@ -1,53 +1,60 @@
 import React from "react";
 import {
-  createBrowserRouter,
+  BrowserRouter as Router,
+  Routes,
+  Route,
   Navigate,
-  RouterProvider,
 } from "react-router-dom";
 import ApplicationCreate from "./pages/appcreate/ApplicationCreate";
 import ApplicationSuccess from "./pages/appsuccess/ApplicationSuccess";
 import ApplicationStatus from "./pages/appstatus/ApplicationStatus";
 import ApplicationDetailPage from "./pages/appdetail/ApplicationDetail";
 import AdminPanel from "./pages/adminpanel/AdminPanel";
-import AdminApplicationDetailPage from "./pages/adminappdetail/AdminApplicationDetail";
-import PrivateRoute from "./PrivateRoute";
-function App() {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Navigate to="/basvuru-olustur" replace />,
-    },
-    {
-      path: "/basvuru-olustur",
-      element: <ApplicationCreate />,
-    },
-    {
-      path: "/basvuru-basarili",
-      element: <ApplicationSuccess />,
-    },
-    {
-      path: "/basvuru-sorgula",
-      element: <ApplicationStatus />,
-    },
-    {
-      path: "/basvuru/:basvuruNo",
-      element: <ApplicationDetailPage />,
-    },
-    {
-      path: "/admin",
-      element: <AdminPanel />,
-    },
-    {
-      path: "/admin/basvuru-listesi",
-      element: <PrivateRoute element={<AdminPanel />} />,
-    },
-    {
-      path: "/admin/basvuru/:basvuruNo",
-      element: <PrivateRoute element={<AdminApplicationDetailPage />} />,
-    },
-  ]);
+import AdminApplicationDetail from "./pages/adminappdetail/AdminApplicationDetail";
+import ApplicationList from "./pages/applicationlist/ApplicationList";
+import ProtectedComponent from "./ProtectedRoute";
+import { ApplicationProvider } from "./context/ApplicationContext";
+import { AdminProvider } from "./context/AdminContext";
 
-  return <RouterProvider router={router} />;
+function App() {
+  return (
+    <Router>
+      <AdminProvider>
+        <ApplicationProvider>
+          <Routes>
+            <Route
+              path="/"
+              element={<Navigate to="/basvuru-olustur" replace />}
+            />
+            <Route path="/basvuru-olustur" element={<ApplicationCreate />} />
+            <Route path="/basvuru-basarili" element={<ApplicationSuccess />} />
+            <Route path="/basvuru-sorgula" element={<ApplicationStatus />} />
+            <Route
+              path="/basvuru/:basvuruNo"
+              element={<ApplicationDetailPage />}
+            />
+            <Route path="/admin" element={<AdminPanel />} />
+            <Route
+              path="/admin/basvuru-listesi"
+              element={
+                <ProtectedComponent>
+                  <ApplicationList />
+                </ProtectedComponent>
+              }
+            />
+            <Route
+              path="/admin/basvuru/:basvuruNo"
+              element={
+                <ProtectedComponent>
+                  <AdminApplicationDetail />
+                </ProtectedComponent>
+              }
+            />
+          </Routes>
+        </ApplicationProvider>
+      </AdminProvider>
+    </Router>
+  );
 }
 
 export default App;

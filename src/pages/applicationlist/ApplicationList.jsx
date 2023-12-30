@@ -1,6 +1,6 @@
 import React from "react";
 import { useApplication } from "../../context/ApplicationContext";
-import Application from "../application/Application";
+import Application from "../../components/application/Application";
 import "./applist.css"
 
 
@@ -20,6 +20,7 @@ function ApplicationList() {
           attachments={app.attachments}
           id={app.id}
           status={app.status}
+          key={app.id}
         />
       ))}
     </div>

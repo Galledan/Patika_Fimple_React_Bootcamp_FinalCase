@@ -23,7 +23,6 @@ function Application({
   const handleDateFormat = (date) => {
     const newDate = new Date(date);
     setFormattedDate(new Date(newDate).toLocaleDateString());
-    console.log(formattedDate);
   };
 
   const getStatusClass = () => {

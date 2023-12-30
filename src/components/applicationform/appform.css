@@ -131,8 +131,10 @@ textarea:-webkit-autofill:active {
   outline: none;
   background-color: red;
   color: var(--Light);
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
+
 }
 
 .form-button > button:hover {
