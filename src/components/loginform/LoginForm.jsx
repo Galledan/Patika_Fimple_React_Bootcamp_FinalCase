@@ -4,11 +4,12 @@ import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import axios from "axios";
 import { useAdmin } from "../../context/AdminContext";
+import "./loginform.css";
 
 function LoginForm() {
   const [loginError, setLoginError] = useState(null);
   const navigate = useNavigate();
-  const { isLoggedIn,setIsLoggedIn } = useAdmin();
+  const { isLoggedIn, setIsLoggedIn } = useAdmin();
 
   const handleLogin = async (values) => {
     try {
@@ -51,33 +52,37 @@ function LoginForm() {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <div>
-        <label>Username:</label>
-        <input
-          type="text"
-          id="username"
-          {...formik.getFieldProps("username")}
-        />
-        {formik.touched.username && formik.errors.username && (
-          <div>{formik.errors.username}</div>
-        )}
-      </div>
+    <div className="login-form-container">
+      <form onSubmit={formik.handleSubmit}>
+        <div className="login-form-name">
+          <label>Username:</label>
+          <input
+            type="text"
+            id="username"
+            {...formik.getFieldProps("username")}
+          />
+          {formik.touched.username && formik.errors.username && (
+            <div>{formik.errors.username}</div>
+          )}
+        </div>
 
-      <div>
-        <label>Password:</label>
-        <input
-          type="password"
-          id="password"
-          {...formik.getFieldProps("password")}
-        />
-        {formik.touched.password && formik.errors.password && (
-          <div>{formik.errors.password}</div>
-        )}
-      </div>
-      {loginError && <div>{loginError}</div>}
-      <button type="submit">Login</button>
-    </form>
+        <div className="login-form-pass">
+          <label>Password:</label>
+          <input
+            type="password"
+            id="password"
+            {...formik.getFieldProps("password")}
+          />
+          {formik.touched.password && formik.errors.password && (
+            <div>{formik.errors.password}</div>
+          )}
+        </div>
+        {loginError && <div>{loginError}</div>}
+        <div className="login-form-button">
+          <button type="submit">Login</button>
+        </div>
+      </form>
+    </div>
   );
 }
 
