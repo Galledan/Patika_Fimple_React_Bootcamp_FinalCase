@@ -1,12 +1,14 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation  } from "react-router-dom";
 
 const AdminContext = createContext();
 
 const AdminProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const isInAdminPage = location.pathname.startsWith === "/admin";
 
   const checkLoginStatus = async () => {
     try {
@@ -14,7 +16,9 @@ const AdminProvider = ({ children }) => {
       if (token) {
         console.log("token exist");
         setIsLoggedIn(true);
-        navigate("/admin/basvuru-listesi")
+        if (isInAdminPage) {
+          navigate("/admin/basvuru-listesi");
+        }
       } else {
         setIsLoggedIn(false);
       }

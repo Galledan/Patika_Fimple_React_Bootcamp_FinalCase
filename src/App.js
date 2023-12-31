@@ -15,12 +15,14 @@ import ApplicationList from "./pages/applicationlist/ApplicationList";
 import ProtectedComponent from "./ProtectedRoute";
 import { ApplicationProvider } from "./context/ApplicationContext";
 import { AdminProvider } from "./context/AdminContext";
+import Navbar from "./components/navbar/Navbar";
 
 function App() {
   return (
     <Router>
       <AdminProvider>
         <ApplicationProvider>
+          <Navbar />
           <Routes>
             <Route
               path="/"

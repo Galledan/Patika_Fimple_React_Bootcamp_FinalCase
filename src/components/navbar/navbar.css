@@ -1,0 +1,16 @@
+nav {
+    height: 50px;
+    width: 100%;
+    position: sticky;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    background-color: var(--Strong-Dark);
+}
+
+nav > a {
+    text-decoration: none;
+    color: var(--Light);
+    
+}
