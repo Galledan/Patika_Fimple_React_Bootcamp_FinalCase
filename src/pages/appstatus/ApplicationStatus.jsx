@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import "./appstatus.css"
 
 const ApplicationStatus = () => {
   const [inputValue, setInputValue] = useState("");
@@ -32,7 +33,7 @@ const ApplicationStatus = () => {
   };
 
   return (
-    <div>
+    <div className="app-status-container">
       <h2>Basvuru Durumu Sorgula</h2>
       <div>
         <label>ID:</label>

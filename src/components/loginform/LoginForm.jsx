@@ -39,8 +39,8 @@ function LoginForm() {
       password: "",
     },
     validationSchema: Yup.object({
-      username: Yup.string().required("Username is required"),
-      password: Yup.string().required("Password is required"),
+      username: Yup.string().required("Kullanıcı adı gereklidir"),
+      password: Yup.string().required("Şifre gereklidir"),
     }),
     onSubmit: async (values) => {
       try {
@@ -55,7 +55,7 @@ function LoginForm() {
     <div className="login-form-container">
       <form onSubmit={formik.handleSubmit}>
         <div className="login-form-name">
-          <label>Username:</label>
+          <label>Kullancı Adı:</label>
           <input
             type="text"
             id="username"
@@ -67,7 +67,7 @@ function LoginForm() {
         </div>
 
         <div className="login-form-pass">
-          <label>Password:</label>
+          <label>Şifre:</label>
           <input
             type="password"
             id="password"

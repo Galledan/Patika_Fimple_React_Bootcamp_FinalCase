@@ -9,7 +9,7 @@ nav {
     background-color: var(--Strong-Dark);
 }
 
-nav > a {
+nav  a {
     text-decoration: none;
     color: var(--Light);
     

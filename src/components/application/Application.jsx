@@ -1,21 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./app.css";
-function Application({
-  firstName,
-  lastName,
-  applicationReason,
-  attachments,
-  applicationDate,
-  id,
-  status,
-}) {
+function Application({ firstName, lastName, applicationDate, id }) {
   const [formattedDate, setFormattedDate] = useState("");
-  const [statusClass, setStatusClass] = useState("");
+  const [status, setStatus] = useState("Beklemede");
 
   const navigate = useNavigate();
 
-  const handleApplicationClick = () => {
+  const handleShowClick = () => {
     console.log(id);
     navigate(`/admin/basvuru/${id}`);
   };
@@ -25,48 +18,61 @@ function Application({
     setFormattedDate(new Date(newDate).toLocaleDateString());
   };
 
-  const getStatusClass = () => {
-    switch (status) {
-      case "pending":
-        return "pending";
-      case "answered":
-        return "answered";
-      case "rejected":
-        return "rejected";
-      default:
-        return "";
+  const checkIsAnswered = async () => {
+    try {
+      const res = await axios.get(
+        `http://localhost:3001/api/savedAnswers/${id}`
+      );
+      if (res.data && res.data.answer) {
+        setStatus("Cevaplandı");
+      } else {
+        setStatus("Beklemede");
+      }
+    } catch (error) {
+      console.error("Cevap bulunamadı:", error);
+      setStatus("pending");
+    }
+  };
+  const deleteApplicationAndAnswer = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3001/api/savedApplications/${id}`);
+      console.log("Application deleted successfully.");
+    } catch (error) {
+      console.error("Başvuru silinemedi");
+    }
+
+    try {
+      await axios.delete(`http://localhost:3001/api/savedAnswers/${id}`);
+      console.log("Answer deleted successfully.");
+    } catch (error) {
+      console.error("Cevap silinemedi,", error);
     }
   };
 
   useEffect(() => {
+    checkIsAnswered();
     handleDateFormat(applicationDate);
   }, []);
-
-  useEffect(() => {
-    setStatusClass(getStatusClass());
-  }, [status]);
-
   return (
-    <div className={`application-container ${statusClass}`}>
-      <div className="applicant-info">
-        <p className="applicant-name">
-          Başvuran Adı Soyadı:{firstName} {lastName}
-        </p>
-        <p>
-          Başvuru Tarihi:
-          {formattedDate}
-        </p>
-      </div>
-      <div className="application-info">
-        <p className="application-reason">
-          Başvuru Sebebi: {applicationReason}
-        </p>
-        <p>{attachments}</p>
-      </div>
-      <div className="application-show-button">
-        <button onClick={handleApplicationClick}>Görüntüle</button>
-      </div>
-    </div>
+    <>
+      <td>
+        {firstName} {lastName}
+      </td>
+      <td>{formattedDate}</td>
+      <td>{id}</td>
+      <td>{status}</td>
+      <td className="table-buttons">
+        <button className="showBtn" onClick={() => handleShowClick(id)}>
+          Görüntüle
+        </button>
+        <button
+          className="deleteBtn"
+          onClick={() => deleteApplicationAndAnswer(id)}
+        >
+          Sil
+        </button>
+      </td>
+    </>
   );
 }
 

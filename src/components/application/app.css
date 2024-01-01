@@ -28,3 +28,37 @@
     cursor: pointer;
 
 }
+
+.table-buttons {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.table-buttons > button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 0px;
+    outline: none;
+    color: var(--Light);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.showBtn {
+    background-color: green;
+}
+
+.showBtn:hover {
+    background-color: rgb(1, 83, 1);
+}
+
+.deleteBtn {
+    background-color: red;
+}
+
+.deleteBtn:hover {
+    background-color: rgb(165, 0, 0);
+}

@@ -15,7 +15,7 @@ const ApplicationProvider = ({ children }) => {
     getApplications();
   }, []);
 
-  const value = { applications, setApplications };
+  const value = { applications, setApplications, getApplications };
 
   return (
     <ApplicationContext.Provider value={value}>

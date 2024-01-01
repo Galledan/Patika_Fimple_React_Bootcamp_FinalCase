@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { useNavigate,useLocation  } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const AdminContext = createContext();
 
@@ -28,13 +28,16 @@ const AdminProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-  
+  const logOut = () => {
+    localStorage.removeItem('token');
+    setIsLoggedIn(false);
+  };
 
+  useEffect(() => {
     checkLoginStatus();
   }, [isLoggedIn]);
 
-  const value = { isLoggedIn, setIsLoggedIn, checkLoginStatus };
+  const value = { isLoggedIn, setIsLoggedIn, logOut, checkLoginStatus };
 
   return (
     <AdminContext.Provider value={value}>{children}</AdminContext.Provider>
