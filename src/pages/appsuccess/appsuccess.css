@@ -1,31 +1,44 @@
 .application-success-container {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: var(--Light);
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--Light);
 }
 
 .success-text {
-    background-color: var(--Darker-Light);
-    padding: 20px;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    align-items: center;
+  background-color: var(--Darker-Light);
+  padding: 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
 }
 
 .success-text > div {
-    display: flex;
-    justify-content: space-evenly;
-    padding: 10px 5px;
-    width: 50%;
-    background-color: blue;
-    border-radius: 5px;
-    font-size: 1.5rem;
-    font-weight: 700;
-    cursor: pointer;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px 5px;
+  width: 50%;
+  background-color: blue;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .success-text {
+    width: 90%;
+    font-size: 0.8rem;
+  }
+
+  .success-text > div {
+    width: 90%;
+
+    font-size: 1rem;
+  }
 }

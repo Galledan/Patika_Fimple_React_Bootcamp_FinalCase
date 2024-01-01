@@ -80,32 +80,55 @@
   }
 
   .filter-container > h2 {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 
   .filters-container {
     align-items: center;
   }
 
+  .search-container,
+  .status-container {
+    font-size: 0.7rem;
+  }
+
   .search-container > input,
   .status-container > select {
     width: 80%;
+    font-size: 0.7rem;
   }
-
 
   .application-table {
-    width: 300px;
+    width: 100%;
   }
-  
 
-  
+  .applications-container > h2 {
+    font-size: 1rem;
+  }
+
+  .application-table th,
+  .application-table td {
+    font-size: 7px;
+    padding: 0;
+    height: 30px;
+  }
+
+  .application-table th {
+    height: 100%;
+    padding: 10px;
+  }
+  .table-buttons {
+    gap: 2px;
+  }
+
+  .table-buttons > button {
+    font-size: 10px !important;
+    padding: 5px;
+    margin: 5px;
+  }
 
   .applications-container {
     padding-block: 20px;
     width: 90%;
-  }
-
-  .applications-container > h2 {
-    font-size: 1.8rem;
   }
 }

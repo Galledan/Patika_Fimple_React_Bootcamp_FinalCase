@@ -22,26 +22,75 @@
   background-color: var(--Strong-Dark);
 }
 
-
 .app-status > h1 {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 .status-entry > input {
+  padding: 12px;
+  border: 1px solid var(--Darker-Light);
+  background-color: var(--Dark);
+  border-radius: 5px;
+  color: var(--Light);
+  height: 55px;
+  width: 350px;
+  text-align: center;
+  font-family: inherit;
+  font-size: 1.1rem;
+}
+
+.app-status > button {
+  width: 20%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 0px;
+  outline: none;
+  background-color: red;
+  color: var(--Light);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.app-status > button:hover {
+  background-color: rgb(165, 0, 0);
+}
+
+@media only screen and (max-width: 600px) {
+  .app-status {
+    height: 300px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .app-status > h1 {
+    font-size: 1rem;
+  }
+
+  .status-entry {
+    display: flex;
+    justify-content: center;
+  }
+
+  .status-entry > input {
     padding: 12px;
     border: 1px solid var(--Darker-Light);
     background-color: var(--Dark);
     border-radius: 5px;
     color: var(--Light);
     height: 55px;
-    width: 350px;
+    width: 90%;
     text-align: center;
     font-family: inherit;
     font-size: 1.1rem;
-}
-
-.app-status > button {
-    width: 20%;
+  }
+  
+  .app-status > button {
+    width: 50%;
     padding: 10px;
     border-radius: 5px;
     border: 0px;
@@ -51,8 +100,6 @@
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
+  }
+  
 }
-
-.app-status > button:hover {
-    background-color: rgb(165, 0, 0);
- }

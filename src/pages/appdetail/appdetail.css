@@ -79,3 +79,26 @@
     align-items: center;
     min-height: 366px;
 }
+
+@media only screen and (max-width: 600px) {
+  .application-details {
+   flex-direction: column;
+  }
+  
+  
+.application,
+.answer-container {
+  padding-block: 50px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  width: 100%;
+}
+
+.app-header,
+.answered-header {
+  font-size: 1rem;
+}
+
+}

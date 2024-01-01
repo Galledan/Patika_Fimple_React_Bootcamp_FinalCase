@@ -60,10 +60,10 @@
 .admin-application-answer > textarea {
     padding: 12px;
     border: 1px solid var(--Darker-Light);
-    background-color: var(--Dark);
+    background-color: var(--Strong-Dark);
     border-radius: 5px;
     color: var(--Light);
-    min-height: 500px;
+    min-height: 300px;
     height: 100%;
     width: 80%;
     font-family: inherit;
@@ -86,4 +86,12 @@
 
 .admin-application-answer > button:hover {
     background-color: rgb(165, 0, 0);
+  }
+
+
+  @media only screen and (max-width: 600px) {
+    .admin-application-answer > button {
+      width: 60%;
+    
+  }
   }

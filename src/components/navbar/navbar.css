@@ -1,16 +1,30 @@
 nav {
-    height: 50px;
-    width: 100%;
-    position: sticky;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    background-color: var(--Strong-Dark);
+  height: 50px;
+  width: 100%;
+  position: sticky;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  background-color: var(--Strong-Dark);
 }
 
-nav  a {
-    text-decoration: none;
-    color: var(--Light);
-    
+nav a {
+  text-decoration: none;
+  color: var(--Light);
+}
+
+@media only screen and (max-width: 600px) {
+  nav {
+    gap: 10px;
+  }
+
+  nav a {
+    font-size: 8px;
+  }
+
+  nav > div {
+    display: flex;
+    align-items: center;
+  }
 }

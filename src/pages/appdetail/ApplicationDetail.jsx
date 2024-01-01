@@ -52,13 +52,12 @@ function ApplicationDetail() {
         <div className="application-details">
           <div className="application">
             <div className="app-header">
-              <h1>{application.id} ID'l Başvuru:</h1>
+              <h1>{application.id} ID'li Başvuru:</h1>
             </div>
             <div className="app-container">
               <div className="applicant-details">
                 <p>
-                  Başvuran Adı Soyadı: {application.firstName}
-                  {application.lastName}
+                  Başvuran Adı Soyadı: {application.firstName} {application.lastName}
                 </p>
                 <p>
                   Yaşı: {application.age} 

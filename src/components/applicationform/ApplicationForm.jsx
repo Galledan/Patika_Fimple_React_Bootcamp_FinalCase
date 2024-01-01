@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react';
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -24,6 +24,15 @@ const validationSchema = Yup.object({
 });
 
 const ApplicationForm = () => {
+
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setSelectedFile(file);
+  };
+
+
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -159,7 +168,11 @@ const ApplicationForm = () => {
               onBlur={formik.handleBlur}
               value={formik.values.attachments}
             />
-            <p>Dosyalarınızı buraya sürekleyin veya buraya tıklayın.</p>
+            <p>  {formik.values.attachments ? (
+                "Ekiniz eklenmiştir"
+              ) : (
+                'Dosyalarınızı buraya sürekleyin veya buraya tıklayın.'
+              )}</p>
           </div>
 
           {formik.touched.attachments && formik.errors.attachments && (

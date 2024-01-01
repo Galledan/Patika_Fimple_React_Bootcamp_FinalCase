@@ -135,11 +135,69 @@ textarea:-webkit-autofill:active {
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-
 }
 
 .form-button > button:hover {
   background-color: rgb(165, 0, 0);
 }
 
+/* -------------------------------------- MEDIA QUERY--------------------------------------------------- */
 
+@media only screen and (max-width: 600px) {
+  .form-container {
+    margin-block: 20px;
+    width: 300px;
+    height: 100%;
+  }
+
+  .form-container > form {
+    padding: 50px 10px 0px 10px;
+    gap: 50px;
+    flex-direction: column;
+  }
+
+  .form-names,
+  .form-numbers {
+    width: 90%;
+    height: calc(100% / 6);
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .form-reason,
+  .form-address,
+  .form-attachment,
+  .form-button {
+    width: 90%;
+    gap: 8px;
+  }
+
+  .form-fname,
+  .form-lname,
+  .form-age,
+  .form-tc {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-names input,
+  .form-numbers input {
+    padding: 12px;
+    height: 55px;
+    width: 250px;
+    font-size: 1.1rem;
+  }
+
+
+
+
+  .attachment-input {
+    padding: 15px;
+  }
+
+  .form-button {
+    padding-bottom: 20px;
+  }
+}
