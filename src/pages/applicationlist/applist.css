@@ -1,8 +1,48 @@
 .application-list-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 100%;
   color: var(--Light);
+}
+
+.filter-container {
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+}
+
+.filter-container > h2 {
+  font-size: 1.8rem;
+}
+
+.filters-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.search-container,
+.status-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.search-container > input,
+.status-container > select {
+  border: 1px solid var(--Darker-Light);
+  background-color: var(--Light);
+  border-radius: 5px;
+  color: var(--Dark);
+  height: 35px;
+  width: 250px;
+  font-family: inherit;
+  text-align: center;
 }
 
 .applications-container {
@@ -10,6 +50,10 @@
   width: 80%;
   height: 100%;
   text-align: center;
+}
+
+.applications-container > h2 {
+  font-size: 2rem;
 }
 
 .application-table {
@@ -28,4 +72,40 @@
 .application-table th {
   background-color: var(--Strong-Light);
   color: var(--Dark);
+}
+
+@media only screen and (max-width: 600px) {
+  .filter-container {
+    padding-top: 20px;
+  }
+
+  .filter-container > h2 {
+    font-size: 1.5rem;
+  }
+
+  .filters-container {
+    align-items: center;
+  }
+
+  .search-container > input,
+  .status-container > select {
+    width: 80%;
+  }
+
+
+  .application-table {
+    width: 300px;
+  }
+  
+
+  
+
+  .applications-container {
+    padding-block: 20px;
+    width: 90%;
+  }
+
+  .applications-container > h2 {
+    font-size: 1.8rem;
+  }
 }

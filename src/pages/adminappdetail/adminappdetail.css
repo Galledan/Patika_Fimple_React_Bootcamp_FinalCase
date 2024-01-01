@@ -1,0 +1,89 @@
+.admin-application-detail-container {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
+.admin-application,
+.admin-application-answer {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  width: 80%;
+}
+
+
+.admin-application {
+  background-color: var(--Light);
+  color: var(--Dark);
+  border-radius: 5px;
+  padding: 18px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-applicant-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.admin-application-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-application-reason {
+  width: 100%;
+  padding: 18px 12px;
+  border: 1px solid var(--Strong-Dark);
+  border-radius: 5px;
+  min-height: 200px;
+}
+
+
+.admin-application-answer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding-bottom: 50px;
+}
+
+.admin-application-answer > textarea {
+    padding: 12px;
+    border: 1px solid var(--Darker-Light);
+    background-color: var(--Dark);
+    border-radius: 5px;
+    color: var(--Light);
+    min-height: 500px;
+    height: 100%;
+    width: 80%;
+    font-family: inherit;
+    font-size: 1.1rem;
+    resize: none;
+}
+
+.admin-application-answer > button {
+    width: 20%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 0px;
+    outline: none;
+    background-color: red;
+    color: var(--Light);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.admin-application-answer > button:hover {
+    background-color: rgb(165, 0, 0);
+  }
