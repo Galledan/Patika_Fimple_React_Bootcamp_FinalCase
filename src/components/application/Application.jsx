@@ -4,7 +4,7 @@ import axios from "axios";
 import "./app.css";
 function Application({ firstName, lastName, applicationDate, id }) {
   const [formattedDate, setFormattedDate] = useState("");
-  const [status, setStatus] = useState("Beklemede");
+  const [status, setStatus] = useState(<i class="fas fa-clock"></i>);
 
   const navigate = useNavigate();
 
@@ -24,9 +24,9 @@ function Application({ firstName, lastName, applicationDate, id }) {
         `http://localhost:3001/api/savedAnswers/${id}`
       );
       if (res.data && res.data.answer) {
-        setStatus("Cevaplandı");
+        setStatus(<i class="fas fa-check"></i>);
       } else {
-        setStatus("Beklemede");
+        setStatus(<i class="fas fa-clock"></i>);
       }
     } catch (error) {
       console.error("Cevap bulunamadı:", error);
@@ -60,16 +60,16 @@ function Application({ firstName, lastName, applicationDate, id }) {
       </td>
       <td>{formattedDate}</td>
       <td>{id}</td>
-      <td>{status}</td>
+      <td className="status-text">{status}</td>
       <td className="table-buttons">
         <button className="showBtn" onClick={() => handleShowClick(id)}>
-          Görüntüle
+        <i class="fas fa-eye"></i>
         </button>
         <button
           className="deleteBtn"
           onClick={() => deleteApplicationAndAnswer(id)}
         >
-          Sil
+          <i class="fas fa-ban"></i>
         </button>
       </td>
     </>

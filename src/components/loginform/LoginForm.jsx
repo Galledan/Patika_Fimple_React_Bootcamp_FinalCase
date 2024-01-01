@@ -9,7 +9,7 @@ import "./loginform.css";
 function LoginForm() {
   const [loginError, setLoginError] = useState(null);
   const navigate = useNavigate();
-  const { isLoggedIn, setIsLoggedIn } = useAdmin();
+  const {setIsLoggedIn } = useAdmin();
 
   const handleLogin = async (values) => {
     try {
@@ -19,9 +19,7 @@ function LoginForm() {
       );
 
       if (response.data.success) {
-        console.log("Login successful");
         setIsLoggedIn(true);
-        console.log(isLoggedIn);
         localStorage.setItem("token", response.data.token);
         navigate("/admin/basvuru-listesi");
       } else {

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 function AdminApplicationDetail() {
   const { basvuruNo } = useParams();
   const [answer, setAnswer] = useState("");
   const [application, setApplication] = useState("");
+  const navigate = useNavigate()
 
   const fetchApplicationDetail = async () => {
     try {
@@ -27,6 +28,7 @@ function AdminApplicationDetail() {
       });
 
       console.log("Cevap başarıyla kaydedildi.");
+      navigate("/admin/basvuru-listesi")
     } catch (error) {
       console.error("Cevap kaydetme hatası", error);
     }

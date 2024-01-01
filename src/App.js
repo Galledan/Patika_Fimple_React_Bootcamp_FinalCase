@@ -15,6 +15,7 @@ import ApplicationList from "./pages/applicationlist/ApplicationList";
 import ProtectedComponent from "./ProtectedRoute";
 import { ApplicationProvider } from "./context/ApplicationContext";
 import { AdminProvider } from "./context/AdminContext";
+import { ToastProvider } from 'react-toast-notifications';
 import Navbar from "./components/navbar/Navbar";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
     <Router>
       <AdminProvider>
         <ApplicationProvider>
+        <ToastProvider placement= "bottom-center">
           <Navbar />
           <Routes>
             <Route
@@ -53,6 +55,7 @@ function App() {
               }
             />
           </Routes>
+          </ToastProvider>
         </ApplicationProvider>
       </AdminProvider>
     </Router>

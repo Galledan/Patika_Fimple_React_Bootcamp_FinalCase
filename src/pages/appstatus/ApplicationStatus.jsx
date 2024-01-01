@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./appstatus.css"
+import "./appstatus.css";
 
 const ApplicationStatus = () => {
   const [inputValue, setInputValue] = useState("");
@@ -19,7 +19,9 @@ const ApplicationStatus = () => {
         setError("Lütfen bir ID girin.");
         return;
       }
-      const response = await axios.get(`http://localhost:3001/api/savedApplications/${inputValue}`);
+      const response = await axios.get(
+        `http://localhost:3001/api/savedApplications/${inputValue}`
+      );
 
       if (response.data) {
         navigate(`/basvuru/${inputValue}`);
@@ -34,17 +36,14 @@ const ApplicationStatus = () => {
 
   return (
     <div className="app-status-container">
-      <h2>Basvuru Durumu Sorgula</h2>
-      <div>
-        <label>ID:</label>
-        <input
-          type="text"
-          value={inputValue}
-          onChange={handleInputChange}
-        />
+      <div className="app-status">
+        <h1>Başvuru Durumunu Sorgula</h1>
+        <div className="status-entry">
+          <input type="text" value={inputValue} onChange={handleInputChange} placeholder="ID'nizi giriniz" />
+        </div>
         <button onClick={handleCheckStatus}>Sorgula</button>
+        {error && <p style={{ color: "red" }}>{error}</p>}
       </div>
-      {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );
 };

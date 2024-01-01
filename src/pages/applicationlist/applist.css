@@ -1,13 +1,13 @@
 .application-list-container {
   display: flex;
+  justify-content: center;
   width: 100%;
-  height: 100vh;
   color: var(--Light);
 }
 
 .applications-container {
-  padding-top: 50px;
-  width: 100%;
+  padding-block: 50px;
+  width: 80%;
   height: 100%;
   text-align: center;
 }

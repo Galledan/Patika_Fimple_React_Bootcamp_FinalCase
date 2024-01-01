@@ -37,9 +37,8 @@ function ApplicationDetail() {
   };
 
   useEffect(() => {
-    checkAnswer()
+    checkAnswer();
     fetchApplicationDetail();
-    
   }, [basvuruNo]);
 
   return (
@@ -51,24 +50,32 @@ function ApplicationDetail() {
       )}
       {application && (
         <div className="application-details">
-          <div className="app-container">
-            <div className="applicant-details">
-              <p>
-                Başvuran Adı Soyadı: {application.firstName}{" "}
-                {application.lastName}
-              </p>
-              <p>
-                Yaşı: {application.age} TC: {application.tcNumber}{" "}
-              </p>
+          <div className="application">
+            <div className="app-header">
+              <h1>{application.id} ID'l Başvuru:</h1>
             </div>
-            <div className="application-details">
-              <p>Başvurunu Nedeni:</p>
-              <p>{application.applicationReason}</p>
+            <div className="app-container">
+              <div className="applicant-details">
+                <p>
+                  Başvuran Adı Soyadı: {application.firstName}
+                  {application.lastName}
+                </p>
+                <p>
+                  Yaşı: {application.age} 
+                </p>
+                <p>TC: {application.tcNumber}</p>
+              </div>
+              <div className="application-reason-container">
+                <p className="applcation-reason-header">Başvurunu Nedeni:</p>
+                <p className="application-reason">{application.applicationReason}</p>
+                <p className="application-attachment">Ekler: {application.attachments}</p>
+              </div>
             </div>
           </div>
+
           <div className="answer-container">
             {answer === "" && (
-              <div>
+              <div className="not-answered-container">
                 <p>
                   Başvurunuz henüz yanıtlanmamıştır lütfen daha sonra tekrar
                   deneyiniz
@@ -76,8 +83,9 @@ function ApplicationDetail() {
               </div>
             )}
             {answer !== "" && (
-              <div>
-               <p>{answer.answer}</p> 
+              <div className="answered-container">
+                <p className="answered-header">Gelen Cevap:</p>
+                <p className="answered-answer">{answer.answer}</p>
               </div>
             )}
           </div>

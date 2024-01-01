@@ -1,17 +1,50 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useApplication } from "../../context/ApplicationContext";
 import Application from "../../components/application/Application";
 import "./applist.css";
 
 function ApplicationList() {
   const { applications, getApplications } = useApplication();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [statusFilter, setStatusFilter] = useState("");
+
+  const filteredApplications = applications.filter(
+    (app) =>
+      (app.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        app.lastName.toLowerCase().includes(searchTerm.toLowerCase())) &&
+      (statusFilter === "" || app.status === statusFilter)
+  );
 
   useEffect(() => {
-    getApplications()
-  }, [applications])
+    getApplications();
+  }, [applications]);
 
   return (
     <div className="application-list-container">
+      <div className="filters-container">
+        <div className="search-container">
+          <label htmlFor="search">Ad Soyad Filtrele:</label>
+          <input
+            type="text"
+            id="search"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+        <div className="filter-container">
+      <label htmlFor="status">Durum Filtrele:</label>
+      <select
+        id="status"
+        value={statusFilter}
+        onChange={(e) => setStatusFilter(e.target.value)}
+      >
+        <option value="">Hepsi</option>
+        <option value="pending">Beklemede</option>
+        <option value="answered">Cevaplandı</option>
+      </select>
+    </div>
+      </div>
+
       <div className="applications-container">
         <h2>Başvuru Listesi:</h2>
         <table className="application-table">
@@ -25,7 +58,7 @@ function ApplicationList() {
             </tr>
           </thead>
           <tbody>
-            {applications.map((app) => (
+            {filteredApplications.map((app) => (
               <tr key={app.id}>
                 <Application
                   firstName={app.firstName}

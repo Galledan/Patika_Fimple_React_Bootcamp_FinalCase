@@ -7,7 +7,7 @@
 }
 
 .form-container > form {
-  padding: 18px 10px;
+  padding: 50px 10px 0px 10px;
   background-color: var(--Strong-Dark);
   width: 100%;
   height: 100%;
@@ -80,6 +80,7 @@
   border-radius: 5px;
   border: 1px solid var(--Darker-Light);
   background-color: var(--Dark);
+  font-size: 1rem;
   font-family: inherit;
   color: var(--Light);
 }

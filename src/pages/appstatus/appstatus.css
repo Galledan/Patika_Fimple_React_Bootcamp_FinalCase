@@ -1,10 +1,58 @@
 .app-status-container {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    color: var(--Light);
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  color: var(--Light);
 }
+
+.app-status {
+  border: 1px solid var(--Darker-Light);
+  height: 300px;
+  width: 80%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  background-color: var(--Strong-Dark);
+}
+
+
+.app-status > h1 {
+    font-size: 2rem;
+}
+
+.status-entry > input {
+    padding: 12px;
+    border: 1px solid var(--Darker-Light);
+    background-color: var(--Dark);
+    border-radius: 5px;
+    color: var(--Light);
+    height: 55px;
+    width: 350px;
+    text-align: center;
+    font-family: inherit;
+    font-size: 1.1rem;
+}
+
+.app-status > button {
+    width: 20%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 0px;
+    outline: none;
+    background-color: red;
+    color: var(--Light);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.app-status > button:hover {
+    background-color: rgb(165, 0, 0);
+ }

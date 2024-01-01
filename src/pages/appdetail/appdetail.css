@@ -1,10 +1,81 @@
 .application-detail-container {
-    width: 100%;
-    min-height: 100vh;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  color: var(--Light);
+}
+
+.application-details {
+  display: flex;
+  width: 100%;
+}
+
+.application,
+.answer-container {
+  padding-inline: 50px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  width: 50%;
+}
+
+.app-header,
+.answered-header {
+  font-size: 1.5rem;
+}
+
+.app-container {
+  background-color: var(--Light);
+  color: var(--Dark);
+  border-radius: 5px;
+  padding: 18px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.applicant-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.application-reason-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.application-reason {
+  width: 100%;
+  padding: 18px 12px;
+  border: 1px solid var(--Strong-Dark);
+  border-radius: 5px;
+  min-height: 200px;
+}
+
+.answered-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.answered-answer {
+  background-color: var(--Light);
+  color: var(--Dark);
+  width: 100%;
+  padding: 18px 12px;
+  border-radius: 5px;
+  min-height: 366px;
+}
+
+.not-answered-container {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 50px;
-    color: var(--Light);
+    min-height: 366px;
 }
